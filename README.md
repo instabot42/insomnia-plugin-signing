@@ -1,17 +1,12 @@
-# insomnia-plugin-ftx-signing
+# insomnia-plugin-signing
 
-All private FTX API calls require an authentication `SIGN` header (HMAC-SHA256) (see [here](https://docs.ftx.com/?python#authentication). 
+Signs API requests using (HMAC-SHA256)
 
-This plugin (when installed) checks all outgoing requests to see if:
+Looks for X-API-KEY, X-API-TS headers.
+Signs the request and adds X-API-SIGN header
 
-- The request is going to [https://ftx.com/api](https://ftx.com/api)
-- An Insomnia environment variable `API_SECRET` exists
-- A request header `FTX-TS` is present
-
-If the above conditions are met, this plugin:
-
-- Computes the HMAC signature based on timestamp, request method, endpoint path and request body
-- Appends the `FTX-SIGN` header with the computed digest.
+Signs it using API_SECRET from the Insomnia environment variable
 
 ---
-This plugin is heavily based on [insomnia-plugin-binance-signing](https://github.com/anson-vandoren/insomnia-plugin-binance-signing)
+
+This plugin is heavily based on [diegomura/insomnia-plugin-ftx-signing](https://github.com/diegomura/insomnia-plugin-ftx-signing)
